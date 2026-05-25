@@ -119,15 +119,49 @@ function changeBackground(newSource) {
     inactiveVideoElement.src = newSource;
     inactiveVideoElement.load();
 
-    // Play and cross-fade opacity transitions
-    inactiveVideoElement.play().then(() => {
+    const doTransition = () => {
+        // Set z-indexes: new video goes on top, old video goes behind but remains visible
+        inactiveVideoElement.style.zIndex = '2';
+        activeVideoElement.style.zIndex = '1';
+
+        // Smoothly fade in the new video on top
         inactiveVideoElement.classList.add('active');
-        activeVideoElement.classList.remove('active');
+
+        const oldActive = activeVideoElement;
         activeVideoElement = inactiveVideoElement;
         currentBgSource = newSource;
-    }).catch(err => {
+
+        // Safely turn off the old video behind the new one after transition finishes
+        setTimeout(() => {
+            if (activeVideoElement !== oldActive) {
+                oldActive.classList.remove('active');
+            }
+        }, 1800);
+    };
+
+    // Ensure new video is actually rendering frames before fading to prevent black flicker
+    let transitioned = false;
+    inactiveVideoElement.onplaying = () => {
+        if (!transitioned) {
+            transitioned = true;
+            doTransition();
+        }
+        inactiveVideoElement.onplaying = null;
+        inactiveVideoElement.ontimeupdate = null;
+    };
+    
+    inactiveVideoElement.ontimeupdate = () => {
+        if (inactiveVideoElement.currentTime > 0 && !transitioned) {
+            transitioned = true;
+            doTransition();
+            inactiveVideoElement.onplaying = null;
+            inactiveVideoElement.ontimeupdate = null;
+        }
+    };
+
+    inactiveVideoElement.play().catch(err => {
         console.log("Cinematic background play failed, forcing active source:", err);
-        // Fallback: change current active source directly
+        // Fallback
         activeVideoElement.src = newSource;
         activeVideoElement.load();
         activeVideoElement.play().catch(e => console.log(e));
