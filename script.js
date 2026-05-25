@@ -169,14 +169,13 @@ function changeBackground(newSource) {
     });
 }
 
-// ========== SCROLL PROGRESS & NAV ==========
+// ========== SCROLL PROGRESS ==========
 function handleScroll() {
     const scrollTop = mainContainer.scrollTop;
     const scrollHeight = mainContainer.scrollHeight - mainContainer.clientHeight;
     progressBar.style.width = (scrollTop / scrollHeight * 100) + '%';
 
     const sections = document.querySelectorAll('.section');
-    const navItems = document.querySelectorAll('.nav-item');
     let currentId = '';
     
     sections.forEach(s => {
@@ -184,11 +183,6 @@ function handleScroll() {
     });
     
     if (currentId) {
-        navItems.forEach(item => {
-            item.classList.remove('active');
-            if (item.getAttribute('href') === '#' + currentId) item.classList.add('active');
-        });
-
         // Trigger cinematic background change for the current section
         const activeSection = document.getElementById(currentId);
         if (activeSection) {
@@ -198,12 +192,6 @@ function handleScroll() {
             }
         }
     }
-}
-
-function scrollToSection(id, event) {
-    if (event) event.preventDefault();
-    const el = document.getElementById(id);
-    if (el) mainContainer.scrollTo({ top: el.offsetTop, behavior: 'smooth' });
 }
 
 // ========== CINEMATIC SCROLL REVEAL ==========
