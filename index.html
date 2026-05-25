@@ -1,634 +1,353 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>The Wedding of Mirna & Andri</title>
-    <meta name="description"
-        content="Undangan Pernikahan Digital Mirna & Andri - 04 Juni 2026. Merupakan suatu kehormatan bagi kami apabila Anda berkenan hadir.">
-
-    <!-- CSS Stylesheet -->
+    <meta name="description" content="Undangan Pernikahan Digital Mirna & Andri - 04 Juni 2026">
     <link rel="stylesheet" href="style.css">
-
-    <!-- Icons (Lucide) -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-
 <body>
 
-    <!-- Desktop Container Wrapper (Frames the phone screen on desktop) -->
-    <div class="desktop-container">
-
-        <!-- Elegant Side Columns on Desktop -->
-        <div class="desktop-sidebar-left">
-            <p>YOU ARE INVITED TO</p>
-            <h1
-                style="font-family: var(--font-serif); font-size: 2.5rem; color: var(--primary-light); margin: 0.5rem 0;">
-                MIRNA & ANDRI</h1>
-            <p>THE WEDDING INVITATION</p>
+    <!-- ============ COVER / OPENER ============ -->
+    <div class="cover-screen" id="coverScreen">
+        <div class="cover-video-bg">
+            <video autoplay loop muted playsinline>
+                <source src="bg1.mp4" type="video/mp4">
+            </video>
         </div>
-
-        <div class="desktop-bg-decor"></div>
-
-        <!-- The Main Smartphone Mockup Frame -->
-        <div class="phone-frame">
-
-            <!-- App Viewport -->
-            <div class="app-viewport">
-
-                <!-- MOCK STATUS BAR (High-end Android/iOS real-time system overlay) -->
-                <div class="mock-status-bar">
-                    <span id="mockTime">10:00</span>
-                    <div class="mock-icons">
-                        <i data-lucide="signal"></i>
-                        <i data-lucide="wifi"></i>
-                        <i data-lucide="battery"></i>
-                    </div>
-                </div>
-
-                <!-- Progressive Top Scroll Progress Bar -->
-                <div class="scroll-progress-bar" id="progressBar"></div>
-
-                <!-- Floating Music Play/Pause Controller -->
-                <div class="floating-music-btn" id="musicBtn" onclick="toggleMusic()">
-                    <div class="music-waves">
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                    </div>
-                </div>
-
-                <!-- AUDIO ELEMENT -->
-                <audio id="bgMusic" loop>
-                    <source src="https://pub-c5e31b5cdafb419a991b61d33b28f95d.r2.dev/wedding-music.mp3"
-                        type="audio/mpeg">
-                    <!-- Fallback -->
-                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-                </audio>
-
-                <!-- ==============================================
-                     MAIN INTERACTIVE SCROLLING APP CONTAINER
-                     (Loads directly into welcome slide)
-                     ============================================== -->
-                <div class="main-invitation-container" id="mainContainer">
-
-                    <!-- SLIDE 1: WELCOME & COUNTDOWN -->
-                    <section class="section" id="welcome" data-bg="bg2.mp4">
-                        <div class="video-bg-container">
-                            <video class="bg-video" autoplay loop muted playsinline>
-                                <source src="bg2.mp4" type="video/mp4">
-                            </video>
-                        </div>
-
-                        <div class="section-content">
-                            <div class="event-card reveal-up stagger-1">You are invited to the wedding of</div>
-
-                            <!-- Slide Image g2.png (Cinematic Scale Reveal) -->
-                            <div class="aesthetic-frame-wrapper reveal-scale stagger-1"
-                                style="width: 170px; height: 220px; margin: 0.6rem 0;">
-                                <svg class="aesthetic-frame-svg" viewBox="0 0 200 270" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M15 255 V90 C15 45, 185 45, 185 90 V255 H15" stroke="#c5a880"
-                                        stroke-width="2" />
-                                    <circle cx="100" cy="18" r="3" fill="#c5a880" />
-                                </svg>
-                                <div class="couple-photo-mask"
-                                    style="width: 145px; height: 195px; border-radius: 80px 80px 0 0;">
-                                    <img src="g2.png" alt="Undangan Pernikahan">
-                                </div>
-                            </div>
-
-                            <h1 class="couple-names reveal-up stagger-2">Mirna <span>&</span> Andri</h1>
-
-                            <div class="glass-card reveal-up stagger-3">
-                                <p
-                                    style="font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--primary-light); margin-bottom: 6px;">
-                                    Hari Pernikahan</p>
-                                <p
-                                    style="font-family: var(--font-serif); font-size: 1rem; font-weight: bold; margin-bottom: 10px;">
-                                    Kamis, 04 Juni 2026</p>
-
-                                <div class="countdown-container">
-                                    <div class="countdown-box">
-                                        <span class="countdown-number" id="days">00</span>
-                                        <span class="countdown-label">Hari</span>
-                                    </div>
-                                    <div class="countdown-box">
-                                        <span class="countdown-number" id="hours">00</span>
-                                        <span class="countdown-label">Jam</span>
-                                    </div>
-                                    <div class="countdown-box">
-                                        <span class="countdown-number" id="mins">00</span>
-                                        <span class="countdown-label">Menit</span>
-                                    </div>
-                                    <div class="countdown-box">
-                                        <span class="countdown-number" id="secs">00</span>
-                                        <span class="countdown-label">Detik</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-
-                    <!-- SLIDE 2: BRIDE & GROOM PROFILES -->
-                    <section class="section" id="couple" data-bg="bg3.mp4">
-                        <div class="video-bg-container">
-                            <video class="bg-video" loop muted playsinline>
-                                <source src="bg3.mp4" type="video/mp4">
-                            </video>
-                        </div>
-
-                        <div class="section-content">
-                            <div class="event-card reveal-up stagger-1">
-                                <div class="bismillah reveal-scale stagger-1">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
-                                </div>
-                                <div class="section-title reveal-up stagger-2"
-                                    style="font-size: 1.1rem; margin-bottom: 0.4rem;">Assalamu’alaikum Wr. Wb.</div>
-                                <p class="greeting-text reveal-up stagger-2">
-                                    Dengan memohon rahmat dan ridho Allah S.W.T kami bermaksud mengundang
-                                    Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami:
-                                </p>
-
-                                <div class="mempelai-container">
-
-                                    <!-- Mempelai Wanita (Bride) - Reveals from Left -->
-                                    <div class="mempelai-card reveal-left stagger-3">
-                                        <div class="mempelai-frame-wrapper">
-                                            <svg class="aesthetic-frame-svg" viewBox="0 0 160 200" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M10 190 V70 C10 30, 150 30, 150 70 V190 H10" stroke="#c5a880"
-                                                    stroke-width="1.8" />
-                                                <path d="M10 70 C10 80, 20 90, 30 90" stroke="#c5a880"
-                                                    stroke-width="0.8" />
-                                                <path d="M150 70 C150 80, 140 90, 130 90" stroke="#c5a880"
-                                                    stroke-width="0.8" />
-                                            </svg>
-                                            <div class="mempelai-photo">
-                                                <img src="bride.png" alt="Mirna">
-                                            </div>
-                                        </div>
-                                        <h3>Mirna</h3>
-                                        <p class="parent-name" style="font-weight: 600; color: var(--primary-light);">
-                                            Mirna Alamsyah, S.Ak.</p>
-                                        <p class="parent-name">Putri dari Bapak H. Alamsyah & Ibu Hj. Kartini</p>
-                                    </div>
-
-                                    <!-- Mempelai Pria (Groom) - Reveals from Right -->
-                                    <div class="mempelai-card reveal-right stagger-3">
-                                        <div class="mempelai-frame-wrapper">
-                                            <svg class="aesthetic-frame-svg" viewBox="0 0 160 200" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M10 190 V70 C10 30, 150 30, 150 70 V190 H10" stroke="#c5a880"
-                                                    stroke-width="1.8" />
-                                                <path d="M10 70 C10 80, 20 90, 30 90" stroke="#c5a880"
-                                                    stroke-width="0.8" />
-                                                <path d="M150 70 C150 80, 140 90, 130 90" stroke="#c5a880"
-                                                    stroke-width="0.8" />
-                                            </svg>
-                                            <div class="mempelai-photo">
-                                                <img src="groom.png" alt="Andri">
-                                            </div>
-                                        </div>
-                                        <h3>Andri</h3>
-                                        <p class="parent-name" style="font-weight: 600; color: var(--primary-light);">
-                                            Andri Syahputra, S.T.</p>
-                                        <p class="parent-name">Putra dari Bapak H. Syahputra & Ibu Hj. Ratna</p>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-
-                    <!-- SLIDE 3: RANGKAIAN ACARA (EVENTS) -->
-                    <section class="section" id="events" data-bg="bg1.mp4">
-                        <div class="video-bg-container">
-                            <video class="bg-video" loop muted playsinline>
-                                <source src="bg1.mp4" type="video/mp4">
-                            </video>
-                        </div>
-
-                        <div class="section-content">
-                            <h2 class="section-title reveal-up">Rangkaian Acara</h2>
-
-                            <div class="events-wrapper">
-
-                                <!-- Mappaci -->
-                                <div class="event-card reveal-up stagger-1">
-                                    <div class="event-icon"><i data-lucide="flower-2"></i></div>
-                                    <h3>Mappaci / Malam Pacar</h3>
-                                    <p class="event-date">Rabu, 03 Juni 2026</p>
-                                    <p class="event-time">Pukul 19.00 WITA - Selesai</p>
-                                    <p>Kediaman Mempelai Wanita<br>Jl. Andi Djemma No. 45, Makassar</p>
-                                </div>
-
-                                <!-- Akad Nikah -->
-                                <div class="event-card reveal-up stagger-2">
-                                    <div class="event-icon"><i data-lucide="heart-handshake"></i></div>
-                                    <h3>Akad Nikah</h3>
-                                    <p class="event-date">Kamis, 04 Juni 2026</p>
-                                    <p class="event-time">Pukul 09.00 WITA - 11.00 WITA</p>
-                                    <p>Masjid Raya Makassar<br>Jl. Masjid Raya, Gaddong, Makassar</p>
-                                    <a class="btn-outline" href="https://maps.google.com" target="_blank">
-                                        <i data-lucide="map-pin"></i> Petunjuk Lokasi
-                                    </a>
-                                </div>
-
-                                <!-- Resepsi -->
-                                <div class="event-card reveal-up stagger-3">
-                                    <div class="event-icon"><i data-lucide="party-popper"></i></div>
-                                    <h3>Resepsi Pernikahan</h3>
-                                    <p class="event-date">Kamis, 04 Juni 2026</p>
-                                    <p class="event-time">Pukul 12.00 WITA - Selesai</p>
-                                    <p>Grand Ballroom Hotel Harper<br>Jl. Perintis Kemerdekaan No. KM 15, Makassar</p>
-                                    <a class="btn-outline" href="https://maps.google.com" target="_blank">
-                                        <i data-lucide="map-pin"></i> Petunjuk Lokasi
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </section>
-
-
-                    <!-- SLIDE 4: LOVE STORY TIMELINE -->
-                    <section class="section" id="story" data-bg="bg1.mp4">
-                        <div class="video-bg-container">
-                            <video class="bg-video" loop muted playsinline>
-                                <source src="bg1.mp4" type="video/mp4">
-                            </video>
-                        </div>
-
-                        <div class="section-content">
-                            <h2 class="section-title reveal-up">Kisah Cinta Kami</h2>
-                            <p class="section-subtitle reveal-up stagger-1">Our Journey to Forever</p>
-
-                            <div class="event-card reveal-up stagger-1">
-                                <div class="timeline">
-
-                                    <!-- Awal Bertemu -->
-                                    <div class="timeline-item reveal-left stagger-1">
-                                        <div class="timeline-dot"></div>
-                                        <div class="timeline-date">2022 - Awal Bertemu</div>
-                                        <h4 class="timeline-title">Takdir yang Mempertemukan</h4>
-                                        <p class="timeline-body">
-                                            Kami pertama kali bertemu di sebuah perpustakaan kota. Percakapan singkat
-                                            tentang buku favorit menuntun kami pada percakapan hangat yang tak pernah
-                                            kami sangka sebelumnya.
-                                        </p>
-                                    </div>
-
-                                    <!-- Menjalin Kisah -->
-                                    <div class="timeline-item reveal-left stagger-2">
-                                        <div class="timeline-dot"></div>
-                                        <div class="timeline-date">2024 - Menjalin Kisah</div>
-                                        <h4 class="timeline-title">Tumbuh Bersama</h4>
-                                        <p class="timeline-body">
-                                            Dua tahun penuh tawa, canda, dan saling mendukung mimpi masing-masing
-                                            membuat kami sadar bahwa kehadiran satu sama lain menyempurnakan hidup kami.
-                                        </p>
-                                    </div>
-
-                                    <!-- Menikah -->
-                                    <div class="timeline-item reveal-left stagger-3">
-                                        <div class="timeline-dot"></div>
-                                        <div class="timeline-date">2026 - Menikah</div>
-                                        <h4 class="timeline-title">Komitmen Suci</h4>
-                                        <p class="timeline-body">
-                                            Dengan keyakinan penuh dan restu kedua orang tua, kami melangkah mantap
-                                            menuju ikatan pernikahan suci, berjanji untuk saling setia selamanya.
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-
-                    <!-- SLIDE 5: AESTHETIC MEDIA GALLERY -->
-                    <section class="section" id="gallery" data-bg="bg2.mp4">
-                        <div class="video-bg-container">
-                            <video class="bg-video" loop muted playsinline>
-                                <source src="bg2.mp4" type="video/mp4">
-                            </video>
-                        </div>
-
-                        <div class="section-content">
-                            <h2 class="section-title reveal-up">Galeri Bahagia</h2>
-                            <p class="section-subtitle reveal-up stagger-1">Moments of Love</p>
-
-                            <div class="event-card reveal-up stagger-1" style="padding: 1rem 0.8rem;">
-                                <div class="gallery-grid">
-                                    <!-- couple.png (tall) -->
-                                    <div class="gallery-item tall reveal-scale stagger-1"
-                                        onclick="openLightbox('couple.png')">
-                                        <img src="couple.png" alt="Couple Image">
-                                        <div class="gallery-overlay"><i data-lucide="maximize-2"></i></div>
-                                    </div>
-                                    <!-- bride.png -->
-                                    <div class="gallery-item reveal-scale stagger-2"
-                                        onclick="openLightbox('bride.png')">
-                                        <img src="bride.png" alt="Bride Image">
-                                        <div class="gallery-overlay"><i data-lucide="maximize-2"></i></div>
-                                    </div>
-                                    <!-- groom.png -->
-                                    <div class="gallery-item reveal-scale stagger-3"
-                                        onclick="openLightbox('groom.png')">
-                                        <img src="groom.png" alt="Groom Image">
-                                        <div class="gallery-overlay"><i data-lucide="maximize-2"></i></div>
-                                    </div>
-                                    <!-- g1.png (tall) -->
-                                    <div class="gallery-item tall reveal-scale stagger-2"
-                                        onclick="openLightbox('g1.png')">
-                                        <img src="g1.png" alt="Gallery 1">
-                                        <div class="gallery-overlay"><i data-lucide="maximize-2"></i></div>
-                                    </div>
-                                    <!-- g2.png -->
-                                    <div class="gallery-item reveal-scale stagger-3" onclick="openLightbox('g2.png')">
-                                        <img src="g2.png" alt="Gallery 2">
-                                        <div class="gallery-overlay"><i data-lucide="maximize-2"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-
-                    <!-- SLIDE 6: WEDDING GIFT -->
-                    <section class="section" id="gifts" data-bg="bg3.mp4">
-                        <div class="video-bg-container">
-                            <video class="bg-video" loop muted playsinline>
-                                <source src="bg3.mp4" type="video/mp4">
-                            </video>
-                        </div>
-
-                        <div class="section-content">
-                            <h2 class="section-title reveal-up">Kado Digital</h2>
-                            <p class="section-subtitle reveal-up stagger-1">Wedding Gift</p>
-
-                            <div class="event-card reveal-up stagger-1">
-                                <p class="gift-text reveal-up stagger-1">
-                                    Doa restu Anda adalah karunia terindah bagi kami. Namun, apabila Anda ingin
-                                    memberikan tanda kasih secara digital, Anda dapat menyalurkannya melalui:
-                                </p>
-
-                                <div class="gift-card-wrapper">
-
-                                    <!-- Bank Card BCA -->
-                                    <div class="wedding-credit-card reveal-left stagger-2">
-                                        <div class="card-header-logo">
-                                            <span class="bank-badge">BANK BCA</span>
-                                            <div class="chip-icon"></div>
-                                        </div>
-                                        <p class="account-num" id="bcaNo">8690987161</p>
-                                        <p class="account-holder">a.n Mirna Alamsyah</p>
-                                        <button class="btn-copy-account"
-                                            onclick="copyToClipboard('8690987161', 'Nomor Rekening BCA berhasil disalin!')">
-                                            <i data-lucide="copy" style="width:12px;height:12px;"></i> Salin
-                                        </button>
-                                    </div>
-
-                                    <!-- Bank Card Mandiri -->
-                                    <div class="wedding-credit-card reveal-right stagger-2">
-                                        <div class="card-header-logo">
-                                            <span class="bank-badge">MANDIRI</span>
-                                            <div class="chip-icon"></div>
-                                        </div>
-                                        <p class="account-num" id="mandiriNo">15200987823</p>
-                                        <p class="account-holder">a.n Andri Syahputra</p>
-                                        <button class="btn-copy-account"
-                                            onclick="copyToClipboard('15200987823', 'Nomor Rekening Mandiri berhasil disalin!')">
-                                            <i data-lucide="copy" style="width:12px;height:12px;"></i> Salin
-                                        </button>
-                                    </div>
-
-                                </div>
-
-                                <!-- Shipping Address -->
-                                <div class="gift-address-box reveal-up stagger-3">
-                                    <h4><i data-lucide="home"
-                                            style="width:14px;height:14px;vertical-align:middle;margin-right:4px;"></i>
-                                        Alamat Pengiriman Kado Fisik</h4>
-                                    <p id="giftAddress">
-                                        Jl. Andi Djemma No. 45, Kel. Banta-Bantaeng, Kec. Rappocini, Kota Makassar,
-                                        Sulawesi Selatan (90222)
-                                    </p>
-                                    <button class="btn-outline"
-                                        style="margin-top: 8px; padding: 6px 12px; font-size:0.65rem;"
-                                        onclick="copyToClipboard('Jl. Andi Djemma No. 45, Makassar', 'Alamat pengiriman berhasil disalin!')">
-                                        <i data-lucide="copy" style="width:10px;height:10px;"></i> Salin Alamat
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-
-                    <!-- SLIDE 7: HOLY SCRIPTURE (Q.S. AR-RUM) -->
-                    <section class="section" id="scripture" data-bg="bg4.mp4">
-                        <div class="video-bg-container">
-                            <video class="bg-video" loop muted playsinline>
-                                <source src="bg4.mp4" type="video/mp4">
-                            </video>
-                        </div>
-
-                        <div class="section-content">
-                            <div class="event-card reveal-up stagger-1">
-                                <div class="event-card reveal-up stagger-1">
-                                    وَمِنْ ءَايَٰتِهِۦٓ أَنْ خَلَقَ Lَكُم مِّنْ أَنفُسِكُمْ أَزْوَٰجًۭا Lِّtَسْكُنُوٓاْ
-                                    إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةًۭ وَرَحْمَةً ۚ إِنَّ فى ذَٰLِكَ Lَءَايَٰتٍۢ
-                                    Lِّقَوْمٍۢ يَتَفَكَّرُونَ
-                                </div>
-                                <p class="qur-verse-translation reveal-up stagger-2">
-                                    "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri
-                                    dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan
-                                    dijadikan-Nya diantaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu
-                                    benar-benar terdapat tanda-tanda bagi kaum yang berfikir."
-                                </p>
-                                <p class="qur-source reveal-up stagger-3">Q.S. Ar-Rum Verse 21</p>
-                            </div>
-                        </div>
-                    </section>
-
-
-                    <!-- SLIDE 8: RSVP & GUEST WISHES BOARD -->
-                    <section class="section" id="rsvp" data-bg="bg1.mp4">
-                        <div class="video-bg-container">
-                            <video class="bg-video" loop muted playsinline>
-                                <source src="bg1.mp4" type="video/mp4">
-                            </video>
-                        </div>
-
-                        <div class="section-content">
-                            <h2 class="section-title reveal-up">Buku Tamu</h2>
-                            <p class="section-subtitle reveal-up stagger-1">RSVP & Wishes</p>
-
-                            <div class="glass-card reveal-up stagger-2" style="padding: 1.2rem 1rem;">
-                                <!-- Input Form -->
-                                <form class="rsvp-form" id="wishesForm" onsubmit="submitWish(event)">
-                                    <div class="form-group reveal-up stagger-1">
-                                        <label for="inputName">Nama Anda</label>
-                                        <input type="text" class="form-control" id="inputName"
-                                            placeholder="Tulis nama lengkap Anda" required>
-                                    </div>
-                                    <div class="form-group reveal-up stagger-1">
-                                        <label for="inputStatus">Konfirmasi Kehadiran</label>
-                                        <select class="form-control" id="inputStatus" required>
-                                            <option value="Hadir">Saya akan Hadir</option>
-                                            <option value="Tidak Hadir">Mohon maaf, Tidak dapat Hadir</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group reveal-up stagger-2">
-                                        <label for="inputMessage">Ucapan & Doa Restu</label>
-                                        <textarea class="form-control" id="inputMessage" rows="3"
-                                            placeholder="Tulis doa restu Anda di sini..." required></textarea>
-                                    </div>
-                                    <button type="submit" class="btn-primary reveal-scale stagger-3"
-                                        style="margin-top: 4px; padding: 10px 20px; align-self: center;">
-                                        <i data-lucide="send" style="width:14px;height:14px;"></i> Kirim Ucapan
-                                    </button>
-                                </form>
-
-                                <!-- Wishes Scrolling Board -->
-                                <div class="wishes-board reveal-up stagger-3" id="wishesBoard">
-                                    <!-- Dynamic elements will be appended here -->
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-
-                    <!-- SLIDE 9: CLOSING & GRATITUDE -->
-                    <section class="section" id="closing" data-bg="bg2.mp4">
-                        <div class="video-bg-container">
-                            <video class="bg-video" loop muted playsinline>
-                                <source src="bg2.mp4" type="video/mp4">
-                            </video>
-                        </div>
-
-                        <div class="section-content">
-                            <div class="closing-quote reveal-scale">Terima Kasih</div>
-
-                            <div class="glass-card reveal-up stagger-1">
-                                <p class="greeting-text reveal-up stagger-2" style="margin-bottom: 1.5rem;">
-                                    Merupakan suatu kehormatan dan kebahagiaan bagi kami sekeluarga, apabila
-                                    Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu kepada kedua mempelai.
-                                </p>
-
-                                <p class="greeting-text reveal-up stagger-2"
-                                    style="font-style: italic; margin-bottom: 2rem;">
-                                    Wassalamu’alaikum Warahmatullahi Wabarakatuh.
-                                </p>
-
-                                <p class="reveal-up stagger-3"
-                                    style="font-size:0.75rem; text-transform:uppercase; letter-spacing:2px; color:var(--primary-light);">
-                                    Kami Yang Berbahagia,</p>
-                                <h2 class="signature-name reveal-scale stagger-3"
-                                    style="margin-top:0.5rem; margin-bottom:0.5rem;">Mirna & Andri</h2>
-                                <p class="greeting-text reveal-up stagger-3" style="font-size:0.75rem;">Beserta Keluarga
-                                    Besar Kedua Mempelai</p>
-
-                                <div class="event-card reveal-up stagger-1">
-                                    <div class="social-btn" onclick="shareVia('whatsapp')"><i
-                                            data-lucide="message-square"></i></div>
-                                    <div class="social-btn" onclick="shareVia('facebook')"><i
-                                            data-lucide="facebook"></i></div>
-                                    <div class="social-btn" onclick="shareVia('instagram')"><i
-                                            data-lucide="instagram"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                </div> <!-- End Main Scroll Container -->
-
-                <!-- ==============================================
-                     STICKY APP BOTTOM TAB BAR
-                     ============================================== -->
-                <nav class="bottom-nav" id="bottomNav">
-                    <a href="#welcome" class="nav-item active" onclick="scrollToSection('welcome', event)">
-                        <i data-lucide="home"></i>
-                        <span>Home</span>
-                    </a>
-                    <a href="#couple" class="nav-item" onclick="scrollToSection('couple', event)">
-                        <i data-lucide="heart"></i>
-                        <span>Mempelai</span>
-                    </a>
-                    <a href="#events" class="nav-item" onclick="scrollToSection('events', event)">
-                        <i data-lucide="calendar"></i>
-                        <span>Acara</span>
-                    </a>
-                    <a href="#story" class="nav-item" onclick="scrollToSection('story', event)">
-                        <i data-lucide="book-open"></i>
-                        <span>Kisah</span>
-                    </a>
-                    <a href="#gallery" class="nav-item" onclick="scrollToSection('gallery', event)">
-                        <i data-lucide="image"></i>
-                        <span>Galeri</span>
-                    </a>
-                    <a href="#rsvp" class="nav-item" onclick="scrollToSection('rsvp', event)">
-                        <i data-lucide="message-circle"></i>
-                        <span>Ucapan</span>
-                    </a>
-                </nav>
-
-            </div> <!-- End App Viewport -->
-
-        </div> <!-- End Phone Mockup Frame -->
-
-        <!-- Desktop Sidebar Right -->
-        <div class="desktop-sidebar-right">
-            <div class="qr-box">
-                <svg viewBox="0 0 100 100">
-                    <rect x="10" y="10" width="20" height="20" stroke="currentColor" stroke-width="4" fill="none" />
-                    <rect x="15" y="15" width="10" height="10" fill="currentColor" />
-                    <rect x="70" y="10" width="20" height="20" stroke="currentColor" stroke-width="4" fill="none" />
-                    <rect x="75" y="15" width="10" height="10" fill="currentColor" />
-                    <rect x="10" y="70" width="20" height="20" stroke="currentColor" stroke-width="4" fill="none" />
-                    <rect x="15" y="75" width="10" height="10" fill="currentColor" />
-
-                    <!-- Random bits of QR -->
-                    <rect x="40" y="20" width="5" height="15" fill="currentColor" />
-                    <rect x="50" y="10" width="10" height="5" fill="currentColor" />
-                    <rect x="45" y="30" width="20" height="5" fill="currentColor" />
-                    <rect x="35" y="45" width="5" height="25" fill="currentColor" />
-                    <rect x="45" y="55" width="15" height="5" fill="currentColor" />
-                    <rect x="55" y="45" width="10" height="10" fill="currentColor" />
-                    <rect x="70" y="70" width="10" height="5" fill="currentColor" />
-                    <rect x="85" y="75" width="5" height="10" fill="currentColor" />
-                    <rect x="75" y="85" width="10" height="5" fill="currentColor" />
-                </svg>
+        <div class="cover-overlay"></div>
+
+        <!-- Floating Particles -->
+        <div class="cover-particles" id="coverParticles"></div>
+
+        <div class="cover-content">
+            <div class="cover-badge reveal-cover s1 pulse-gold">THE WEDDING OF</div>
+
+            <div class="cover-names-wrapper reveal-cover s2 float-slow">
+                <div class="cover-ornament-top pulse-gold">❧</div>
+                <h1 class="cover-names">
+                    <span class="name-first">Mirna</span>
+                    <span class="name-amp">&</span>
+                    <span class="name-second">Andri</span>
+                </h1>
+                <div class="cover-ornament-bottom pulse-gold">❧</div>
             </div>
-            <p>Pindai Kode QR untuk membuka undangan di Smartphone Anda</p>
+
+            <div class="cover-date reveal-cover s3">Kamis, 04 Juni 2026</div>
+
+            <div class="cover-guest-box reveal-cover s4 hover-lift">
+                <p class="cover-guest-label">Kepada Yth.</p>
+                <p class="cover-guest-name" id="guestNameDisplay">Bapak/Ibu/Saudara/i</p>
+            </div>
+
+            <button class="cover-btn reveal-cover s5 pulse-gold" id="openBtn" onclick="openInvitation()">
+                <span class="btn-icon"><i data-lucide="mail-open"></i></span>
+                <span>Buka Undangan</span>
+            </button>
         </div>
-
-    </div> <!-- End Desktop Container Wrapper -->
-
-
-    <!-- ==============================================
-         GLOBAL OVERLAYS (Lightbox & Toast Notification)
-         ============================================== -->
-    <!-- Image Lightbox Modal -->
-    <div class="lightbox" id="lightboxModal" onclick="closeLightbox()">
-        <div class="lightbox-close"><i data-lucide="x"></i></div>
-        <img class="lightbox-content" id="lightboxImg" src="" alt="Zoomed view">
     </div>
 
-    <!-- Copied Clipboard Toast Notice -->
-    <div class="toast-alert" id="toastNotice">Nomor Rekening BCA berhasil disalin!</div>
+    <!-- ============ MAIN INVITATION ============ -->
+    <div class="invitation-wrapper" id="invitationWrapper">
 
+        <!-- Progress Bar -->
+        <div class="scroll-progress-bar" id="progressBar"></div>
 
-    <!-- Pure JS logic -->
+        <!-- Fixed Cinematic Video Backgrounds -->
+        <div class="cinematic-bg-container">
+            <video class="bg-video-fixed active" id="bgVideo1" autoplay loop muted playsinline>
+                <source src="bg2.mp4" type="video/mp4">
+            </video>
+            <video class="bg-video-fixed" id="bgVideo2" loop muted playsinline></video>
+            <div class="bg-video-overlay"></div>
+        </div>
+
+        <!-- Music Button -->
+        <div class="floating-music-btn" id="musicBtn" onclick="toggleMusic()">
+            <div class="music-waves">
+                <div class="wave-bar"></div><div class="wave-bar"></div>
+                <div class="wave-bar"></div><div class="wave-bar"></div>
+            </div>
+        </div>
+
+        <audio id="bgMusic" loop>
+            <source src="https://pub-c5e31b5cdafb419a991b61d33b28f95d.r2.dev/wedding-music.mp3" type="audio/mpeg">
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
+
+        <!-- Scrollable Content -->
+        <div class="main-scroll" id="mainContainer">
+
+            <!-- SECTION 1: WELCOME -->
+            <section class="section" id="welcome" data-bg="bg2.mp4">
+                <div class="section-content">
+                    <div class="event-card reveal-up s1 hover-lift">You are invited to the wedding of</div>
+                    
+                    <div class="aesthetic-frame-wrapper reveal-scale s2 float-slow" style="width:170px;height:220px;margin:0.6rem 0;">
+                        <svg class="aesthetic-frame-svg" viewBox="0 0 200 270" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 255 V90 C15 45, 185 45, 185 90 V255 H15" stroke="#c5a880" stroke-width="2"/>
+                            <circle cx="100" cy="18" r="3" fill="#c5a880" class="pulse-gold"/>
+                        </svg>
+                        <div class="couple-photo-mask" style="width:145px;height:195px;border-radius:80px 80px 0 0;">
+                            <img src="g2.png" alt="Undangan Pernikahan" class="zoom-hover">
+                        </div>
+                    </div>
+
+                    <h1 class="couple-names reveal-up s3 float-slow">
+                        <span class="name-animated">Mirna</span>
+                        <span class="amp-animated">&</span>
+                        <span class="name-animated">Andri</span>
+                    </h1>
+
+                    <div class="glass-card reveal-up s4 hover-lift">
+                        <p class="reveal-up s1" style="font-size:0.75rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--primary-light);margin-bottom:6px;">Hari Pernikahan</p>
+                        <p class="reveal-up s2" style="font-family:var(--font-serif);font-size:1rem;font-weight:bold;margin-bottom:10px;">Kamis, 04 Juni 2026</p>
+                        <div class="countdown-container reveal-up s3">
+                            <div class="countdown-box hover-lift"><span class="countdown-number" id="days">00</span><span class="countdown-label">Hari</span></div>
+                            <div class="countdown-box hover-lift"><span class="countdown-number" id="hours">00</span><span class="countdown-label">Jam</span></div>
+                            <div class="countdown-box hover-lift"><span class="countdown-number" id="mins">00</span><span class="countdown-label">Menit</span></div>
+                            <div class="countdown-box hover-lift"><span class="countdown-number" id="secs">00</span><span class="countdown-label">Detik</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: BRIDE & GROOM -->
+            <section class="section" id="couple" data-bg="bg3.mp4">
+                <div class="section-content">
+                    <div class="event-card reveal-up s1 hover-lift">
+                        <div class="bismillah reveal-scale s1 float-slow">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+                        <div class="section-title reveal-up s2 pulse-gold" style="font-size:1.1rem;margin-bottom:0.4rem;">Assalamu'alaikum Wr. Wb.</div>
+                        <p class="greeting-text reveal-up s3">Dengan memohon rahmat dan ridho Allah S.W.T kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami:</p>
+                        
+                        <div class="mempelai-container">
+                            <!-- Bride -->
+                            <div class="mempelai-card reveal-right s4 hover-lift">
+                                <div class="mempelai-frame-wrapper float-slow">
+                                    <svg class="aesthetic-frame-svg" viewBox="0 0 160 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10 190 V70 C10 30, 150 30, 150 70 V190 H10" stroke="#c5a880" stroke-width="1.8"/>
+                                    </svg>
+                                    <div class="mempelai-photo"><img src="bride.png" alt="Mirna" class="zoom-hover"></div>
+                                </div>
+                                <h3 class="pulse-gold">Mirna</h3>
+                                <p class="parent-name" style="font-weight:600;color:var(--primary-light);">Mirna Alamsyah, S.Ak.</p>
+                                <p class="parent-name">Putri dari Bapak H. Alamsyah & Ibu Hj. Kartini</p>
+                            </div>
+
+                            <!-- Groom -->
+                            <div class="mempelai-card reveal-left s4 hover-lift">
+                                <div class="mempelai-frame-wrapper float-slow">
+                                    <svg class="aesthetic-frame-svg" viewBox="0 0 160 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10 190 V70 C10 30, 150 30, 150 70 V190 H10" stroke="#c5a880" stroke-width="1.8"/>
+                                    </svg>
+                                    <div class="mempelai-photo"><img src="groom.png" alt="Andri" class="zoom-hover"></div>
+                                </div>
+                                <h3 class="pulse-gold">Andri</h3>
+                                <p class="parent-name" style="font-weight:600;color:var(--primary-light);">Andri Syahputra, S.T.</p>
+                                <p class="parent-name">Putra dari Bapak H. Syahputra & Ibu Hj. Ratna</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: EVENTS -->
+            <section class="section" id="events" data-bg="bg1.mp4">
+                <div class="section-content">
+                    <h2 class="section-title reveal-up pulse-gold">Rangkaian Acara</h2>
+                    <div class="events-wrapper">
+                        <!-- Event 1 -->
+                        <div class="event-card reveal-up s1 hover-lift">
+                            <div class="event-icon float-slow"><i data-lucide="flower-2"></i></div>
+                            <h3>Mappaci / Malam Pacar</h3>
+                            <p class="event-date">Rabu, 03 Juni 2026</p>
+                            <p class="event-time">Pukul 19.00 WITA - Selesai</p>
+                            <p>Kediaman Mempelai Wanita<br>Jl. Andi Djemma No. 45, Makassar</p>
+                        </div>
+                        <!-- Event 2 -->
+                        <div class="event-card reveal-up s2 hover-lift">
+                            <div class="event-icon float-slow"><i data-lucide="heart-handshake"></i></div>
+                            <h3>Akad Nikah</h3>
+                            <p class="event-date">Kamis, 04 Juni 2026</p>
+                            <p class="event-time">Pukul 09.00 WITA - 11.00 WITA</p>
+                            <p>Masjid Raya Makassar<br>Jl. Masjid Raya, Gaddong, Makassar</p>
+                            <a class="btn-outline hover-lift" href="https://maps.google.com" target="_blank"><i data-lucide="map-pin"></i> Petunjuk Lokasi</a>
+                        </div>
+                        <!-- Event 3 -->
+                        <div class="event-card reveal-up s3 hover-lift">
+                            <div class="event-icon float-slow"><i data-lucide="party-popper"></i></div>
+                            <h3>Resepsi Pernikahan</h3>
+                            <p class="event-date">Kamis, 04 Juni 2026</p>
+                            <p class="event-time">Pukul 12.00 WITA - Selesai</p>
+                            <p>Grand Ballroom Hotel Harper<br>Jl. Perintis Kemerdekaan No. KM 15, Makassar</p>
+                            <a class="btn-outline hover-lift" href="https://maps.google.com" target="_blank"><i data-lucide="map-pin"></i> Petunjuk Lokasi</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: LOVE STORY -->
+            <section class="section" id="story" data-bg="bg1.mp4">
+                <div class="section-content">
+                    <h2 class="section-title reveal-up pulse-gold">Kisah Cinta Kami</h2>
+                    <p class="section-subtitle reveal-up s1 float-slow">Our Journey to Forever</p>
+                    <div class="event-card reveal-up s2 hover-lift">
+                        <div class="timeline">
+                            <div class="timeline-item reveal-left s1">
+                                <div class="timeline-dot pulse-gold"></div>
+                                <div class="timeline-date">2022 - Awal Bertemu</div>
+                                <h4 class="timeline-title">Takdir yang Mempertemukan</h4>
+                                <p class="timeline-body">Kami pertama kali bertemu di sebuah perpustakaan kota. Percakapan singkat tentang buku favorit menuntun kami pada percakapan hangat yang tak pernah kami sangka sebelumnya.</p>
+                            </div>
+                            <div class="timeline-item reveal-left s2">
+                                <div class="timeline-dot pulse-gold"></div>
+                                <div class="timeline-date">2024 - Menjalin Kisah</div>
+                                <h4 class="timeline-title">Tumbuh Bersama</h4>
+                                <p class="timeline-body">Dua tahun penuh tawa, canda, dan saling mendukung mimpi masing-masing membuat kami sadar bahwa kehadiran satu sama lain menyempurnakan hidup kami.</p>
+                            </div>
+                            <div class="timeline-item reveal-left s3">
+                                <div class="timeline-dot pulse-gold"></div>
+                                <div class="timeline-date">2026 - Menikah</div>
+                                <h4 class="timeline-title">Komitmen Suci</h4>
+                                <p class="timeline-body">Dengan keyakinan penuh dan restu kedua orang tua, kami melangkah mantap menuju ikatan pernikahan suci, berjanji untuk saling setia selamanya.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5: GALLERY -->
+            <section class="section" id="gallery" data-bg="bg2.mp4">
+                <div class="section-content">
+                    <h2 class="section-title reveal-up pulse-gold">Galeri Bahagia</h2>
+                    <p class="section-subtitle reveal-up s1 float-slow">Moments of Love</p>
+                    <div class="event-card reveal-up s2 hover-lift" style="padding:1rem 0.8rem;">
+                        <div class="gallery-grid">
+                            <div class="gallery-item tall reveal-scale s1 hover-lift" onclick="openLightbox('couple.png')"><img src="couple.png" alt="Couple" class="zoom-hover"><div class="gallery-overlay"><i data-lucide="maximize-2"></i></div></div>
+                            <div class="gallery-item reveal-scale s2 hover-lift" onclick="openLightbox('bride.png')"><img src="bride.png" alt="Bride" class="zoom-hover"><div class="gallery-overlay"><i data-lucide="maximize-2"></i></div></div>
+                            <div class="gallery-item reveal-scale s3 hover-lift" onclick="openLightbox('groom.png')"><img src="groom.png" alt="Groom" class="zoom-hover"><div class="gallery-overlay"><i data-lucide="maximize-2"></i></div></div>
+                            <div class="gallery-item tall reveal-scale s2 hover-lift" onclick="openLightbox('g1.png')"><img src="g1.png" alt="Gallery 1" class="zoom-hover"><div class="gallery-overlay"><i data-lucide="maximize-2"></i></div></div>
+                            <div class="gallery-item reveal-scale s3 hover-lift" onclick="openLightbox('g2.png')"><img src="g2.png" alt="Gallery 2" class="zoom-hover"><div class="gallery-overlay"><i data-lucide="maximize-2"></i></div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 6: WEDDING GIFT -->
+            <section class="section" id="gifts" data-bg="bg3.mp4">
+                <div class="section-content">
+                    <h2 class="section-title reveal-up pulse-gold">Kado Digital</h2>
+                    <p class="section-subtitle reveal-up s1 float-slow">Wedding Gift</p>
+                    <div class="event-card reveal-up s2 hover-lift">
+                        <p class="gift-text reveal-up s1">Doa restu Anda adalah karunia terindah bagi kami. Namun, apabila Anda ingin memberikan tanda kasih secara digital, Anda dapat menyalurkannya melalui:</p>
+                        
+                        <div class="gift-card-wrapper">
+                            <!-- Card BCA -->
+                            <div class="wedding-credit-card reveal-left s2 hover-lift">
+                                <div class="card-header-logo">
+                                    <span class="bank-badge">BANK BCA</span>
+                                    <div class="chip-icon float-slow"></div>
+                                </div>
+                                <p class="account-num">8690987161</p>
+                                <p class="account-holder">a.n Mirna Alamsyah</p>
+                                <button class="btn-copy-account hover-lift" onclick="copyToClipboard('8690987161','Nomor Rekening BCA berhasil disalin!')"><i data-lucide="copy" style="width:12px;height:12px;"></i> Salin</button>
+                            </div>
+
+                            <!-- Card Mandiri -->
+                            <div class="wedding-credit-card reveal-right s2 hover-lift">
+                                <div class="card-header-logo">
+                                    <span class="bank-badge">MANDIRI</span>
+                                    <div class="chip-icon float-slow"></div>
+                                </div>
+                                <p class="account-num">15200987823</p>
+                                <p class="account-holder">a.n Andri Syahputra</p>
+                                <button class="btn-copy-account hover-lift" onclick="copyToClipboard('15200987823','Nomor Rekening Mandiri berhasil disalin!')"><i data-lucide="copy" style="width:12px;height:12px;"></i> Salin</button>
+                            </div>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="gift-address-box reveal-up s3 hover-lift">
+                            <h4><i data-lucide="home" style="width:14px;height:14px;vertical-align:middle;margin-right:4px;" class="float-slow"></i> Alamat Pengiriman Kado Fisik</h4>
+                            <p>Jl. Andi Djemma No. 45, Kel. Banta-Bantaeng, Kec. Rappocini, Kota Makassar, Sulawesi Selatan (90222)</p>
+                            <button class="btn-outline hover-lift" style="margin-top:8px;padding:6px 12px;font-size:0.65rem;" onclick="copyToClipboard('Jl. Andi Djemma No. 45, Makassar','Alamat pengiriman berhasil disalin!')"><i data-lucide="copy" style="width:10px;height:10px;"></i> Salin Alamat</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 7: SCRIPTURE -->
+            <section class="section" id="scripture" data-bg="bg4.mp4">
+                <div class="section-content">
+                    <div class="event-card reveal-up s1 hover-lift">
+                        <div class="arabic-verse reveal-scale s1 float-slow" style="font-family:'Times New Roman',serif;font-size:1.15rem;line-height:2;direction:rtl;margin-bottom:1rem;color:var(--primary-light);">
+                            وَمِنْ ءَايَٰتِهِۦٓ أَنْ خَلَقَ لَكُم مِّنْ أَنfُسِكُمْ أَزْوَٰجًۭا لِّتَسْكُنُوٓاْ إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةًۭ وَرَحْمَةً ۚ إِنَّ فِى ذَٰلِكَ لَءَايَٰتٍۢ Lِّقَوْمٍۢ يَتَفَكَّرُونَ
+                        </div>
+                        <p class="qur-verse-translation reveal-up s2">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang."</p>
+                        <p class="qur-source reveal-up s3 pulse-gold">Q.S. Ar-Rum Verse 21</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 8: RSVP -->
+            <section class="section" id="rsvp" data-bg="bg1.mp4">
+                <div class="section-content">
+                    <h2 class="section-title reveal-up pulse-gold">Buku Tamu</h2>
+                    <p class="section-subtitle reveal-up s1 float-slow">RSVP & Wishes</p>
+                    <div class="glass-card reveal-up s2 hover-lift" style="padding:1.2rem 1rem;">
+                        <form class="rsvp-form" id="wishesForm" onsubmit="submitWish(event)">
+                            <div class="form-group reveal-up s1"><label for="inputName">Nama Anda</label><input type="text" class="form-control hover-lift" id="inputName" placeholder="Tulis nama lengkap Anda" required></div>
+                            <div class="form-group reveal-up s2"><label for="inputStatus">Konfirmasi Kehadiran</label><select class="form-control hover-lift" id="inputStatus" required><option value="Hadir">Saya akan Hadir</option><option value="Tidak Hadir">Mohon maaf, Tidak dapat Hadir</option></select></div>
+                            <div class="form-group reveal-up s3"><label for="inputMessage">Ucapan & Doa Restu</label><textarea class="form-control hover-lift" id="inputMessage" rows="3" placeholder="Tulis doa restu Anda di sini..." required></textarea></div>
+                            <button type="submit" class="btn-primary reveal-scale s4 hover-lift" style="margin-top:4px;padding:10px 20px;align-self:center;"><i data-lucide="send" style="width:14px;height:14px;"></i> Kirim Ucapan</button>
+                        </form>
+                        <div class="wishes-board reveal-up s5" id="wishesBoard"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 9: CLOSING -->
+            <section class="section" id="closing" data-bg="bg2.mp4">
+                <div class="section-content">
+                    <div class="closing-quote reveal-scale s1 float-slow">Terima Kasih</div>
+                    <div class="glass-card reveal-up s2 hover-lift">
+                        <p class="greeting-text reveal-up s3" style="margin-bottom:1.5rem;">Merupakan suatu kehormatan dan kebahagiaan bagi kami sekeluarga, apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu kepada kedua mempelai.</p>
+                        <p class="greeting-text reveal-up s4" style="font-style:italic;margin-bottom:2rem;">Wassalamu'alaikum Warahmatullahi Wabarakatuh.</p>
+                        <p class="reveal-up s5" style="font-size:0.75rem;text-transform:uppercase;letter-spacing:2px;color:var(--primary-light);">Kami Yang Berbahagia,</p>
+                        <h2 class="signature-name reveal-scale s5 float-slow" style="margin-top:0.5rem;margin-bottom:0.5rem;text-shadow:0 0 10px rgba(197,168,128,0.3);">Mirna & Andri</h2>
+                        <p class="greeting-text reveal-up s5" style="font-size:0.75rem;">Beserta Keluarga Besar Kedua Mempelai</p>
+                        
+                        <div class="event-card reveal-up s5 hover-lift" style="display:flex;justify-content:center;gap:10px;padding:0.8rem;margin-top:1rem;background:rgba(255,255,255,0.02);">
+                            <div class="social-btn hover-lift" onclick="shareVia('whatsapp')"><i data-lucide="message-square"></i></div>
+                            <div class="social-btn hover-lift" onclick="shareVia('facebook')"><i data-lucide="facebook"></i></div>
+                            <div class="social-btn hover-lift" onclick="shareVia('instagram')"><i data-lucide="instagram"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div><!-- End mainContainer -->
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav animate-nav" id="bottomNav">
+            <a href="#welcome" class="nav-item active hover-lift" onclick="scrollToSection('welcome',event)"><i data-lucide="home"></i><span>Home</span></a>
+            <a href="#couple" class="nav-item hover-lift" onclick="scrollToSection('couple',event)"><i data-lucide="heart"></i><span>Mempelai</span></a>
+            <a href="#events" class="nav-item hover-lift" onclick="scrollToSection('events',event)"><i data-lucide="calendar"></i><span>Acara</span></a>
+            <a href="#gallery" class="nav-item hover-lift" onclick="scrollToSection('gallery',event)"><i data-lucide="image"></i><span>Galeri</span></a>
+            <a href="#rsvp" class="nav-item hover-lift" onclick="scrollToSection('rsvp',event)"><i data-lucide="message-circle"></i><span>Ucapan</span></a>
+        </nav>
+
+    </div><!-- End invitation-wrapper -->
+
+    <!-- OVERLAYS -->
+    <div class="lightbox" id="lightboxModal" onclick="closeLightbox()">
+        <div class="lightbox-close hover-lift"><i data-lucide="x"></i></div>
+        <img class="lightbox-content" id="lightboxImg" src="" alt="Zoomed view">
+    </div>
+    <div class="toast-alert" id="toastNotice"></div>
+
     <script src="script.js"></script>
-    <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
-    </script>
+    <script>lucide.createIcons();</script>
 </body>
-
 </html>
