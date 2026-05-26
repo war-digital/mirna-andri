@@ -99,7 +99,7 @@ function initCountdown() {
         const now = new Date().getTime();
         const d = weddingDate - now;
         if (d < 0) {
-            ['days','hours','mins','secs'].forEach(id => document.getElementById(id).innerText = '00');
+            ['days', 'hours', 'mins', 'secs'].forEach(id => document.getElementById(id).innerText = '00');
             return;
         }
         document.getElementById('days').innerText = String(Math.floor(d / 86400000)).padStart(2, '0');
@@ -111,62 +111,33 @@ function initCountdown() {
 
 // ========== CINEMATIC BACKGROUND SWITCHER ==========
 function changeBackground(newSource) {
+
     if (!newSource || newSource === currentBgSource) return;
 
-    const inactiveVideoElement = (activeVideoElement === bgVideo1) ? bgVideo2 : bgVideo1;
+    const nextVideo =
+        (activeVideoElement === bgVideo1)
+            ? bgVideo2
+            : bgVideo1;
 
-    // Load new background video source
-    inactiveVideoElement.src = newSource;
-    inactiveVideoElement.load();
+    // Jangan langsung hilangkan video lama
+    nextVideo.src = newSource;
 
-    const doTransition = () => {
-        // Set z-indexes: new video goes on top, old video goes behind but remains visible
-        inactiveVideoElement.style.zIndex = '2';
-        activeVideoElement.style.zIndex = '1';
+    nextVideo.load();
 
-        // Smoothly fade in the new video on top
-        inactiveVideoElement.classList.add('active');
+    nextVideo.oncanplay = () => {
 
-        const oldActive = activeVideoElement;
-        activeVideoElement = inactiveVideoElement;
+        nextVideo.play().catch(() => { });
+
+        // video baru muncul pelan
+        nextVideo.classList.add('active');
+
+        // video lama tetap ada dulu
+        activeVideoElement.classList.remove('active');
+
+        activeVideoElement = nextVideo;
+
         currentBgSource = newSource;
-
-        // Safely turn off the old video behind the new one after transition finishes
-        setTimeout(() => {
-            if (activeVideoElement !== oldActive) {
-                oldActive.classList.remove('active');
-            }
-        }, 1800);
     };
-
-    // Ensure new video is actually rendering frames before fading to prevent black flicker
-    let transitioned = false;
-    inactiveVideoElement.onplaying = () => {
-        if (!transitioned) {
-            transitioned = true;
-            doTransition();
-        }
-        inactiveVideoElement.onplaying = null;
-        inactiveVideoElement.ontimeupdate = null;
-    };
-    
-    inactiveVideoElement.ontimeupdate = () => {
-        if (inactiveVideoElement.currentTime > 0 && !transitioned) {
-            transitioned = true;
-            doTransition();
-            inactiveVideoElement.onplaying = null;
-            inactiveVideoElement.ontimeupdate = null;
-        }
-    };
-
-    inactiveVideoElement.play().catch(err => {
-        console.log("Cinematic background play failed, forcing active source:", err);
-        // Fallback
-        activeVideoElement.src = newSource;
-        activeVideoElement.load();
-        activeVideoElement.play().catch(e => console.log(e));
-        currentBgSource = newSource;
-    });
 }
 
 // ========== SCROLL PROGRESS ==========
@@ -177,11 +148,11 @@ function handleScroll() {
 
     const sections = document.querySelectorAll('.section');
     let currentId = '';
-    
+
     sections.forEach(s => {
         if (scrollTop >= s.offsetTop - s.clientHeight / 3) currentId = s.id;
     });
-    
+
     if (currentId) {
         // Trigger cinematic background change for the current section
         const activeSection = document.getElementById(currentId);
@@ -279,7 +250,7 @@ function submitWish(event) {
 }
 
 function escapeHtml(s) {
-    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
 }
 
 // ========== SHARE ==========
@@ -298,4 +269,63 @@ window.addEventListener('DOMContentLoaded', () => {
     initCountdown();
     initWishesBoard();
     mainContainer.addEventListener('scroll', handleScroll);
+});
+/* =========================
+   RANDOM SCROLL ANIMATION
+========================= */
+
+const animationClasses = [
+    "anim-fade-up",
+    "anim-fade-down",
+    "anim-left",
+    "anim-right",
+    "anim-scale",
+    "anim-rotate",
+    "anim-zoom",
+    "anim-blur",
+    "anim-diagonal",
+    "anim-float"
+];
+
+const revealElements = document.querySelectorAll(
+    '.event-card, .glass-card, .gallery-item, .modern-card, .timeline-item, .countdown-box, .section-title, .section-subtitle, .social-btn, .gift-address-box, .wedding-credit-card'
+);
+
+revealElements.forEach((el) => {
+
+    el.classList.add("reveal-item");
+
+    // RANDOM ANIMATION
+    const randomAnim =
+        animationClasses[
+        Math.floor(Math.random() * animationClasses.length)
+        ];
+
+    el.classList.add(randomAnim);
+
+});
+
+const revealObserver = new IntersectionObserver((entries) => {
+
+    entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+
+            entry.target.classList.add("reveal-active");
+
+        } else {
+
+            // supaya animasi muncul lagi saat scroll balik
+            entry.target.classList.remove("reveal-active");
+
+        }
+
+    });
+
+}, {
+    threshold: 0.15
+});
+
+revealElements.forEach((el) => {
+    revealObserver.observe(el);
 });
